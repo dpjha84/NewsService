@@ -2,11 +2,11 @@
 {
     public class PagingInfo
     {
-        const int maxPageSize = 20;
+        const int maxPageSize = 8;
 
         public int pageNumber { get; set; } = 1;
 
-        public int _pageSize { get; set; } = 10;
+        public int _pageSize { get; set; } = 8;
 
         public int pageSize
         {

@@ -14,32 +14,21 @@ namespace NewsService.Controllers
 {
     public class NewsController : ApiController
     {
-        private readonly INewsAggregator _newsAggregator;
+        private readonly IPagedNewsAggregator _newsAggregator;
 
-        public NewsController(INewsAggregator newsAggregator)
+        public NewsController(IPagedNewsAggregator newsAggregator)
         {
             _newsAggregator = newsAggregator;
         }
 
-        // GET api/news
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pagingInfo"></param>
+        /// <returns></returns>
         public IEnumerable<News> Get([FromUri] PagingInfo pagingInfo)
         {
-            var source = new InternalNewsSource();
-            var json = JsonConvert.SerializeObject(source);
-            return _newsAggregator
-                //.Add(new InternalNewsSource())
-                //.Add(new ExternalNewsSource())
-                //.Add(new ExternalNewsSource2())
-                .GetPagedData<News>(pagingInfo);
+            return _newsAggregator.GetPagedData<News>(pagingInfo);
         }
-
-        
-    }
-
-    public class NewsSource1
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
     }
 }

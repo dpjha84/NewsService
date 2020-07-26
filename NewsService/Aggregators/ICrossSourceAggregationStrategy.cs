@@ -6,6 +6,6 @@ namespace NewsService.Aggregators
 {
     public interface ICrossSourceAggregationStrategy
     {
-        IEnumerable<News> Aggregate(IList<INewsSource> newsSources);
+        IEnumerable<News> Aggregate(IEnumerable<INewsSource> newsSources);
     }
 }

@@ -8,8 +8,6 @@ namespace NewsService.Sources
     {
         int Id { get; set; }
 
-        string Name { get; set; }
-
         string Key { get; set; }
 
         IEnumerable<News> News { get; }

@@ -7,22 +7,22 @@ namespace NewsService.Aggregators
 {
     public class PriorityNewsFirstAggregationStrategy : ICrossSourceAggregationStrategy
     {
-        public IEnumerable<News> Aggregate(IList<INewsSource> newsSources)
+        public IEnumerable<News> Aggregate(IEnumerable<INewsSource> newsSources)
         {
             var priorties = Enumerable.Empty<News>();
             priorties = newsSources.Aggregate(priorties, (current, list)
                 => current.Concat(list.News.Where(n => n.IsPriority)));
+
+            var normals = Enumerable.Empty<News>();
+            normals = newsSources.Aggregate(normals, (current, list)
+                => current.Concat(list.News.Where(n => !n.IsPriority && n.Category != NewsCategory.Advertisements)));
 
             var ads = Enumerable.Empty<News>();
             ads = newsSources.Aggregate(ads, (current, list)
                 => current.Concat(list.News.Where(n => n.Category == NewsCategory.Advertisements)));
 
             var combined = Enumerable.Empty<News>();
-            combined = newsSources.Aggregate(combined, (current, list)
-                => current.Concat(list.News.Where(n => n.IsPriority)));
-
-            return newsSources.Aggregate(combined, (current, list)
-                => current.Concat(list.News.Where(n => !n.IsPriority)));
+            return combined.Concat(priorties).Concat(normals).Concat(ads);
         }
     }
 }
