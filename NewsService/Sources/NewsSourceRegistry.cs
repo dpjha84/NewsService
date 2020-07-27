@@ -43,7 +43,7 @@ namespace NewsService.Controllers
             var highestId = _sourceMap.Any() ? _sourceMap.Select(x => x.Value.Id).Max() : 0;
             var source = new T { Id = highestId + 1, Key = sourceKey };
             _sourceMap.Add(sourceKey, source);
-            OnSourceRegistered(source, new EventArgs());
+            OnSourceRegistered?.Invoke(source, new EventArgs());
             return source;
         }
 
@@ -52,7 +52,7 @@ namespace NewsService.Controllers
             if (!_sourceMap.ContainsKey(sourceKey)) return;
             var source = _sourceMap[sourceKey];
             _sourceMap.Remove(sourceKey);
-            OnSourceUnregistered(source, new EventArgs());
+            OnSourceUnregistered?.Invoke(source, new EventArgs());
         }
 
         public IEnumerable<T> GetNewsSources()
