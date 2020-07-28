@@ -11,6 +11,6 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="pagingInfo"></param>
         /// <returns></returns>
-        PagedList<T> GetPagedData<T>(PagingInfo pagingInfo);
+        PagedList<T> GetPagedData<T>(int pageNumber, int pageSize);
     }
 }

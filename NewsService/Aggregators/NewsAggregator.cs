@@ -34,12 +34,12 @@ namespace NewsService.Aggregators
         /// <typeparam name="T"></typeparam>
         /// <param name="info"></param>
         /// <returns></returns>
-        public PagedList<T> GetPagedData<T>(PagingInfo info)
+        public PagedList<T> GetPagedData<T>(int pageNumber, int pageSize)
         {
-            _pagingStrategy.PageSize = info.pageSize;
+            _pagingStrategy.PageSize = pageSize;
             var combined = _pagingStrategy.Arrange(_aggregatedNews);
-            var items = combined.Skip((info.pageNumber - 1) * info.pageSize).Take(info.pageSize);
-            return new PagedList<T>((IEnumerable<T>)items, combined.Count(), info.pageNumber, info.pageSize);
+            var items = combined.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            return new PagedList<T>((IEnumerable<T>)items, combined.Count(), pageNumber, pageSize);
         }
 
         /// <summary>

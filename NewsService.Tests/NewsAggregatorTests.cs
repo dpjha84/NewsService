@@ -40,11 +40,11 @@ namespace NewsService.Tests
         public void Verify_Aggregated_Data_Is_Paged_Correctly(int size)
         {
             var paging = new PagingInfo { pageNumber = 1, pageSize = size };
-            var actual = aggregator.GetPagedData<News>(paging);
+            var actual = aggregator.GetPagedData<News>(paging.pageNumber, paging.pageSize);
             Helper.ListEqualAssert(Helper.GetHeadings(commaSeparatedNews).Take(size).ToArray(), actual.Select(x => x.Heading).ToArray());
             
             paging.pageNumber = 2;
-            actual = aggregator.GetPagedData<News>(paging);
+            actual = aggregator.GetPagedData<News>(paging.pageNumber, paging.pageSize);
             Helper.ListEqualAssert(Helper.GetHeadings(commaSeparatedNews).Skip(size).Take(size).ToArray(), actual.Select(x => x.Heading).ToArray());
         }
     }

@@ -14,6 +14,11 @@ namespace NewsService.Paging
         public int PageSize { get; private set; }
         public int TotalCount { get; private set; }
 
+        public PagedList()
+        {
+
+        }
+
         public PagedList(IEnumerable<T> items, int count, int pageNumber, int pageSize)
         {
             TotalCount = count;

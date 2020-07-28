@@ -41,6 +41,7 @@ namespace NewsService.Controllers
         /// <param name="id">registered news source id</param>
         /// <param name="newsList">news list</param>
         /// <returns></returns>
+        [HttpPut]
         public IHttpActionResult Put(int id, [FromBody] IList<News> newsList)
         {
             var source = _registry.GetSource(id);

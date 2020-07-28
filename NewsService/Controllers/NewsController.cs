@@ -8,7 +8,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace NewsService.Controllers
 {
@@ -28,10 +27,15 @@ namespace NewsService.Controllers
         /// Gets news based on page data
         /// </summary>
         /// <param name="pagingInfo"></param>
-        /// <returns></returns>
-        public IEnumerable<News> Get([FromUri] PagingInfo pagingInfo)
+        /// <returns></returns
+        [HttpGet]
+        [Route("")]
+        [Route("api/news")]
+        public IHttpActionResult Get([FromUri] PagingInfo pagingInfo)
         {
-            return _newsAggregator.GetPagedData<News>(pagingInfo);
+            var pageNumber = pagingInfo != null ? pagingInfo.pageNumber : PagingInfo.defaultPageNumber;
+            var pageSize = pagingInfo != null ? pagingInfo.pageSize : PagingInfo.defaultPageSize;
+            return Ok(_newsAggregator.GetPagedData<News>(pageNumber, pageSize));
         }
     }
 }
