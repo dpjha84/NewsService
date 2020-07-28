@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace NewsService.Paging
 {
+    /// <summary>
+    /// Paged List
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PagedList<T> : List<T>
     {
         public int CurrentPage { get; private set; }

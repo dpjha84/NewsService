@@ -14,6 +14,11 @@ namespace NewsService.Tests
     [TestFixture]
     public class AggregationStrategyTests
     {
+        /// <summary>
+        /// Verify news aggregation.
+        /// </summary>
+        /// <param name="expected">Expected comma separated news list on left side below</param>
+        /// <param name="input">actual comma separated news list collection on right side below</param>
         [TestCase("N1, N2, N3, N4, N5, N6",     "N1, N2, N3", "N4, N5, N6")]  
         [TestCase("P1, P2, P3, N1, N2, A1",     "N1, P1, P2", "P3, A1, N2")]  
         [TestCase("P1, P2, N1, N2, N3",         "P1, N1, P2, N2, N3", "")]    

@@ -1,20 +1,35 @@
 ﻿namespace NewsService.Paging
 {
+    /// <summary>
+    /// Paging info that client passes
+    /// </summary>
     public class PagingInfo
     {
-        const int maxPageSize = 8;
+        public const int maxPageSize = 8;
+        public const int defaultPageSize = 8;
+        public const int defaultPageNumber = 1;
+        private int _pageSize = defaultPageSize;
+        private int _pageNumber = defaultPageNumber;
 
-        public int pageNumber { get; set; } = 1;
 
-        public int _pageSize { get; set; } = 8;
+        public int pageNumber
+        {
+            get => _pageNumber;
+            set
+            {
+                if (value < 1) _pageNumber = defaultPageNumber;
+                else _pageNumber = value;
+            }
+        }
 
         public int pageSize
         {
-
-            get { return _pageSize; }
+            get => _pageSize;
             set
             {
-                _pageSize = (value > maxPageSize) ? maxPageSize : value;
+                if (value < 1) _pageSize = defaultPageSize;
+                else if (value > maxPageSize) _pageSize = maxPageSize;
+                else _pageSize = value;
             }
         }
     }

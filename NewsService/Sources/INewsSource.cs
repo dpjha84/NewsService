@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace NewsService.Sources
 {
+    /// <summary>
+    /// Interface for news source
+    /// </summary>
     public interface INewsSource : IObservableItem
     {
         int Id { get; set; }
@@ -13,14 +16,5 @@ namespace NewsService.Sources
         IEnumerable<News> News { get; }
 
         void AddNews(IEnumerable<News> news);
-    }
-
-    public interface IObservableItem
-    {
-        void Attach(INewsSourceObserver observer);
-
-        void Detach(INewsSourceObserver observer);
-
-        void Notify();
     }
 }

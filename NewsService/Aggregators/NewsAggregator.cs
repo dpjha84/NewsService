@@ -9,6 +9,9 @@ using System.Web;
 
 namespace NewsService.Aggregators
 {
+    /// <summary>
+    /// Paged News Aggregator
+    /// </summary>
     public class PagedNewsAggregator : IPagedNewsAggregator, INewsSourceObserver
     {
         private IEnumerable<News> _aggregatedNews = Enumerable.Empty<News>();
@@ -25,6 +28,12 @@ namespace NewsService.Aggregators
             _pagingStrategy = pagingStrategy;
         }
 
+        /// <summary>
+        /// Get aggregated news for given page
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="info"></param>
+        /// <returns></returns>
         public PagedList<T> GetPagedData<T>(PagingInfo info)
         {
             _pagingStrategy.PageSize = info.pageSize;
@@ -33,11 +42,18 @@ namespace NewsService.Aggregators
             return new PagedList<T>((IEnumerable<T>)items, combined.Count(), info.pageNumber, info.pageSize);
         }
 
+        /// <summary>
+        /// Refresh when news source data gets changed
+        /// </summary>
         public void Refresh()
         {
             Aggregate();
         }
 
+        /// <summary>
+        /// Aggregate news based on the strategy
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<News> Aggregate()
         {
             _aggregatedNews = _aggregationStrategy.Aggregate(_newsSources);

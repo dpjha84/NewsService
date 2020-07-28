@@ -14,6 +14,11 @@ namespace NewsService.Tests
     [TestFixture]
     public class PagingStrategyTests
     {
+        /// <summary>
+        /// Verify aggregated news is sequenced correctly as per the paging strategy.
+        /// </summary>
+        /// <param name="commaSepratedInput">Comma separated news as input on left side below</param>
+        /// <param name="commaSepratedExpected">Comma separated page sequence as output on right side below</param>
         [TestCase("N1, N2, N3, N4, N5",     "N1, N2, N3, N4, N5")]  // All normal news
         [TestCase("N1, N2, N3, A1, A2",     "N1, N2, N3, A1")]      // Normal news and Ads
         [TestCase("P1, N1, P2, N2, N3",     "P1, P2, N1, N2, N3")]  // Priority and normal news

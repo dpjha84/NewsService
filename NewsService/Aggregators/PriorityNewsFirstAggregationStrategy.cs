@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace NewsService.Aggregators
 {
+    /// <summary>
+    /// Priority News First Aggregation Strategy
+    /// </summary>
     public class PriorityNewsFirstAggregationStrategy : ICrossSourceAggregationStrategy
     {
         public IEnumerable<News> Aggregate(IEnumerable<INewsSource> newsSources)

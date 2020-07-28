@@ -69,6 +69,7 @@
     <Compile Include="Helper.cs" />
     <Compile Include="AggregationStrategyTests.cs" />
     <Compile Include="NewsSourceRegistryTests.cs" />
+    <Compile Include="PagingInfoTests.cs" />
     <Compile Include="PagingStrategyTests.cs" />
     <Compile Include="NewsAggregatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

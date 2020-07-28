@@ -8,8 +8,14 @@ using Unity.WebApi;
 
 namespace NewsService
 {
+    /// <summary>
+    /// Container to register all dependencies
+    /// </summary>
     public static class UnityConfig
     {
+        /// <summary>
+        /// Register Components
+        /// </summary>
         public static void RegisterComponents()
         {
 			var container = new UnityContainer();

@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace NewsService.Paging
 {
+    /// <summary>
+    /// Paging strategy with priority news first and news to ad ratio as 3:1
+    /// </summary>
     public class PriorityNewsFirstWithWeightedNewsPagingStrategy : IPagingStrategy
     {
         public int PageSize { get; set; } = 8;
@@ -13,6 +16,11 @@ namespace NewsService.Paging
 
         private int AdsWeight { get; set; } = 1;
 
+        /// <summary>
+        /// Arrange
+        /// </summary>
+        /// <param name="newsList"></param>
+        /// <returns></returns>
         public IEnumerable<News> Arrange(IEnumerable<News> newsList)
         {
             var priorties = newsList.Where(n => n.IsPriority);

@@ -12,6 +12,9 @@ using System.Web.Mvc;
 
 namespace NewsService.Controllers
 {
+    /// <summary>
+    /// News Controller
+    /// </summary>
     public class NewsController : ApiController
     {
         private readonly IPagedNewsAggregator _newsAggregator;
@@ -22,7 +25,7 @@ namespace NewsService.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Gets news based on page data
         /// </summary>
         /// <param name="pagingInfo"></param>
         /// <returns></returns>

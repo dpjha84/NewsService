@@ -121,6 +121,7 @@
     <Compile Include="Aggregators\IPagedNewsAggregator.cs" />
     <Compile Include="Paging\PriorityNewsFirstWithWeightedNewsPagingStrategy.cs" />
     <Compile Include="Paging\IPagingStrategy.cs" />
+    <Compile Include="Sources\IObservableItem.cs" />
     <Compile Include="Sources\NewsSourceRegistry.cs" />
     <Compile Include="Sources\INewsSourceObserver.cs" />
     <Compile Include="Aggregators\PriorityNewsFirstAggregationStrategy.cs" />
@@ -133,11 +134,8 @@
     <Compile Include="Sources\INewsSourceRegistry.cs" />
     <Compile Include="Controllers\NewsSourceController.cs" />
     <Compile Include="Models\NewsCategory.cs" />
-    <Compile Include="Sources\PtiNewsSource.cs" />
-    <Compile Include="Sources\GoogleNewsSource.cs" />
     <Compile Include="Sources\INewsSource.cs" />
-    <Compile Include="Sources\INewsSourceAdder.cs" />
-    <Compile Include="Sources\InternalNewsSource.cs" />
+    <Compile Include="Sources\NewsSource.cs" />
     <Compile Include="Paging\IPagedData.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Paging\PagingInfo.cs" />
