@@ -6,8 +6,8 @@ News Service to aggregate news from multiple sources and show them based on cust
 # Getting news:
     GET     https://{host}
     GET     https://{host}/api/news
-    GET     https://{host}?pageNumber=1&pageSize=8
-    GET     https://{host}/api/news?pageNumber=1&pageSize=8
+    GET     https://{host}?pageNumber=1&pageSize=4
+    GET     https://{host}/api/news?pageNumber=1&pageSize=4
         
 # News Source Registration:
     POST    https://{host}/api/newssource?sourceKey=InternalNews
