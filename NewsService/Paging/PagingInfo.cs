@@ -6,7 +6,7 @@
     public class PagingInfo
     {
         public const int maxPageSize = 8;
-        public const int defaultPageSize = 8;
+        public const int defaultPageSize = 4;
         public const int defaultPageNumber = 1;
         private int _pageSize = defaultPageSize;
         private int _pageNumber = defaultPageNumber;
