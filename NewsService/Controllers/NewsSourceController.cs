@@ -27,8 +27,10 @@ namespace NewsService.Controllers
         /// <param name="sourceKey">source key</param>
         /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult Post([FromUri] string sourceKey)
+        [Route("api/newssource")]
+        public IHttpActionResult Post([FromUri] string sourceKey = null)
         {
+            if (string.IsNullOrWhiteSpace(sourceKey)) return BadRequest("Invalid Source Key");
             var source = _registry.Register(sourceKey);
             if (source == null)
                 return BadRequest(sourceAlreadyRegistered);
@@ -42,8 +44,10 @@ namespace NewsService.Controllers
         /// <param name="newsList">news list</param>
         /// <returns></returns>
         [HttpPut]
-        public IHttpActionResult Put(int id, [FromBody] IList<News> newsList)
+        [Route("api/newssource/{id}")]
+        public IHttpActionResult Put(int id, [FromBody] IEnumerable<News> newsList)
         {
+            if (newsList == null) return BadRequest("Invalid News List data");
             var source = _registry.GetSource(id);
             if(source == null ) return BadRequest(sourceNotRegistered);
             source.AddNews(newsList);
@@ -56,10 +60,12 @@ namespace NewsService.Controllers
         /// <param name="sourceKey">source key</param>
         /// <returns></returns>
         [HttpDelete]
-        public IHttpActionResult Delete([FromUri] string sourceKey)
+        [Route("api/newssource")]
+        public IHttpActionResult Delete([FromUri] string sourceKey = null)
         {
+            if (string.IsNullOrWhiteSpace(sourceKey)) return BadRequest("Invalid Source Key");
             if (!_registry.IsRegistered(sourceKey))
-                return BadRequest(sourceAlreadyRegistered);
+                return BadRequest(sourceNotRegistered);
             _registry.Unregister(sourceKey);
             return Ok();
         }
